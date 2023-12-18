@@ -20,14 +20,16 @@ public class JFreePanelChartDisplay extends JPanel implements ChartDisplay {
 
     private JFreeChart chartOf(Chart chart) {
         return ChartFactory.createBarChart(
-                chart.title(), chart.xAxis(), chart.yAxis(),
+                chart.title(),
+                chart.xAxisLabel(),
+                chart.yAxisLabel(),
                 dataset(chart.data()));
     }
 
     private CategoryDataset dataset(Map<String, Double> data) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         for (String platform : data.keySet()) {
-            dataset.addValue(data.get(platform), platform, "Number of videogames");
+            dataset.addValue(data.get(platform), platform, "");
         }
         return dataset;
     }
